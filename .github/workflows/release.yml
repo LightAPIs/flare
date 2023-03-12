@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'main'
+      - 'flaring'
     tags:
       - '0.*.*'
 env:
-  GO_VERSION: "1.20"
+  GO_VERSION: "1.20.2"
 
 jobs:
   build:
@@ -60,4 +60,4 @@ jobs:
           version: latest
           args: release --rm-dist
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}

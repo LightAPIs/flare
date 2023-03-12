@@ -45,9 +45,7 @@
   background-color: rgb(92, 92, 92);
 }
 
-
 @media (max-width: 768px) {
-  
   .theme-groups .theme {
     display: inline-block;
     width: 100px;
@@ -60,10 +58,9 @@
     width: 30px;
     height: 30px;
   }
-  
 }
 
-@media (max-width: 375px) {
+@media (max-width: 576px) {
   .theme-groups .theme {
     display: inline-block;
     width: 47%;

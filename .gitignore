@@ -23,6 +23,7 @@ internal/templates/html/*
 internal/mdi/mdi-cheat-sheets
 internal/guide/guide-assets
 internal/editor/editor-assets
+internal/pages/home/home-assets
 internal/weather/icons
 .DS_Store
 tmp

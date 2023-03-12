@@ -39,7 +39,7 @@ func initMdiResourceTemplate(src string, dest string) {
 		mdiJSON = string(file)
 	}
 
-	goFile := "package mdi\nvar iconMap = map[string]string" + mdiJSON
+	goFile := "package mdi\nvar IconMap = map[string]string" + mdiJSON
 	goFile = strings.Replace(goFile, "\"\n}", "\",\n}", 1)
 	content, _ := format.Source([]byte(goFile))
 

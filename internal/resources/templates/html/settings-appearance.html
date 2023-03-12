@@ -47,6 +47,11 @@
 <select name=show-bookmarks id=settings-show-bookmarks><option value=1 selected>是<option value=0>否</select>
 {{ else }}
 <select name=show-bookmarks id=settings-show-bookmarks><option value=0 selected>否<option value=1>是</select>
+{{ end }}</div><div class=form-group><label for=settings-horizontal-bookmarks>水平排列书签</label>
+{{ if .OptionHorizontalBookmarks }}
+<select name=horizontal-bookmarks id=settings-horizontal-bookmarks><option value=1 selected>是<option value=0>否</select>
+{{ else }}
+<select name=horizontal-bookmarks id=settings-horizontal-bookmarks><option value=0 selected>否<option value=1>是</select>
 {{ end }}</div><div class=form-group><label for=settings-hide-settings-button>隐藏首页设置按钮</label>
 {{ if .OptionHideSettingsButton }}
 <select name=hide-settings-button id=settings-hide-settings-button><option value=1 selected>是<option value=0>否</select>
@@ -57,4 +62,9 @@
 <select name=hide-help-button id=settings-hide-help-button><option value=1 selected>是<option value=0>否</select>
 {{ else }}
 <select name=hide-help-button id=settings-hide-help-button><option value=0 selected>否<option value=1>是</select>
+{{ end }}</div><div class=form-group><label for=settings-hide-top-button>隐藏首页返回顶部按钮</label>
+{{ if .OptionHideTopButton }}
+<select name=hide-top-button id=settings-hide-top-button><option value=1 selected>是<option value=0>否</select>
+{{ else }}
+<select name=hide-top-button id=settings-hide-top-button><option value=0 selected>否<option value=1>是</select>
 {{ end }}</div><div class=form-group><input class=btn-submit type=submit value=保存修改></div></form></div>{{ end }}

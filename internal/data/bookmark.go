@@ -18,7 +18,7 @@ func initBookmarks(filePath string, isFavorite bool) (result FlareModel.Bookmark
 
 	var exampleIcons = [28]string{
 		"evernote", "FireHydrant", "email", "MicrosoftOnenote",
-		"Robber", "EvPlugType1", "FileImage", "WeatherHazy",
+		"si3M", "siAdblockPlus", "siGoogle", "siAlpineDotJs",
 		"checkDecagram", "sofaOutline", "foodCroissant", "musicCircleOutline", "eraser",
 		"BowArrow", "KeyboardOutline", "Incognito", "mastodon", "messageCog",
 		"alphaFCircleOutline", "alphaLCircleOutline", "alphaACircleOutline", "alphaRCircleOutline", "alphaECircleOutline",

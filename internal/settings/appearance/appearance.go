@@ -27,16 +27,18 @@ func updateAppearanceOptions(c *gin.Context) {
 		OptionOpenAppNewTab      bool `form:"open-app-newtab"`
 		OptionOpenBookmarkNewTab bool `form:"open-bookmark-newtab"`
 
-		OptionShowTitle     bool   `form:"show-title"`
-		OptionGreetings     string `form:"greetings"`
-		OptionShowDateTime  bool   `form:"show-datetime"`
-		OptionShowApps      bool   `form:"show-apps"`
-		OptionShowBookmarks bool   `form:"show-bookmarks"`
-		HideSettingsButton  bool   `form:"hide-settings-button"`
-		HideHelpButton      bool   `form:"hide-help-button"`
-		EnableEncryptedLink bool   `form:"enable-encrypted-link"`
-		IconMode            string `form:"icon-mode"`
-		KeepLetterCase      bool   `form:"keep-letter-case"`
+		OptionShowTitle           bool   `form:"show-title"`
+		OptionGreetings           string `form:"greetings"`
+		OptionShowDateTime        bool   `form:"show-datetime"`
+		OptionShowApps            bool   `form:"show-apps"`
+		OptionShowBookmarks       bool   `form:"show-bookmarks"`
+		OptionHorizontalBookmarks bool   `form:"horizontal-bookmarks"`
+		HideSettingsButton        bool   `form:"hide-settings-button"`
+		HideHelpButton            bool   `form:"hide-help-button"`
+		HideTopButton             bool   `form:"hide-top-button"`
+		EnableEncryptedLink       bool   `form:"enable-encrypted-link"`
+		IconMode                  string `form:"icon-mode"`
+		KeepLetterCase            bool   `form:"keep-letter-case"`
 
 		OptionCustomDay   string `form:"custom-day"`
 		OptionCustomMonth string `form:"custom-month"`
@@ -58,8 +60,10 @@ func updateAppearanceOptions(c *gin.Context) {
 	update.ShowDateTime = body.OptionShowDateTime
 	update.ShowApps = body.OptionShowApps
 	update.ShowBookmarks = body.OptionShowBookmarks
+	update.HorizontalBookmarks = body.OptionHorizontalBookmarks
 	update.HideSettingsButton = body.HideSettingsButton
 	update.HideHelpButton = body.HideHelpButton
+	update.HideTopButton = body.HideTopButton
 	update.EnableEncryptedLink = body.EnableEncryptedLink
 	update.KeepLetterCase = body.KeepLetterCase
 
@@ -102,9 +106,12 @@ func pageAppearance(c *gin.Context) {
 			"OptionShowDateTime":        options.ShowDateTime,
 			"OptionShowApps":            options.ShowApps,
 			"OptionShowBookmarks":       options.ShowBookmarks,
+			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
 			"OptionHideSettingsButton":  options.HideSettingsButton,
 			"OptionHideHelpButton":      options.HideHelpButton,
+			"OptionHideTopButton":       options.HideTopButton,
 			"OptionEnableEncryptedLink": options.EnableEncryptedLink,
+			"OptionKeepLetterCase":      options.KeepLetterCase,
 			"OptionIconModeDefault":     IconModeDefault,
 			"OptionIconModeFilling":     IconModeFilling,
 		},

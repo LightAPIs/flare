@@ -32,7 +32,7 @@ a {
 }
 
 .clearfix::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -55,7 +55,7 @@ h2 a {
 }
 
 .pageview {
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   top: 0;
@@ -77,6 +77,7 @@ h2 a {
 
 .pull-left {
   float: left;
+  vertical-align: top;
 }
 
 .pull-right {
@@ -111,33 +112,36 @@ h2 a {
 }
 
 #page-home.pageview .container {
-  min-width: 375px;
+  width: 90%;
+  padding: 50px 150px;
+  min-width: 360px;
+}
+
+@media (max-width: 1600px) {
+  #page-home.pageview .container {
+    width: 90%;
+    padding: 50px 100px;
+  }
 }
 
 @media (max-width: 1200px) {
   #page-home.pageview .container {
     width: 90%;
+    padding: 40px 75px;
+  }
+}
+
+@media (max-width: 992px) {
+  #page-home.pageview .container {
+    width: 95%;
+    padding: 25px 50px;
   }
 }
 
 @media (max-width: 768px) {
   #page-home.pageview .container {
-    width: 90%;
-    padding: 20px;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 375px) {
-  #page-home.pageview .container {
     width: 100%;
     padding: 20px;
     margin: 0 auto;
-  }
-}
-
-@media (min-width: 1201px) {
-  #page-home.pageview .container {
-    width: 90%;
-    padding: 50px 250px;
   }
 }

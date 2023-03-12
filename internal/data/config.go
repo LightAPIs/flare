@@ -34,10 +34,14 @@ ShowDateTime: true
 ShowApps: true
 # 展示书签组件
 ShowBookmarks: true
+# 水平排列书签
+HorizontalBookmarks: false
 # 隐藏界面中的设置按钮
 HideSettingButton: false
 # 隐藏界面中的帮助按钮
 HideHelpButton: false
+# 隐藏界面中的返回顶部按钮
+HideTopButton: false
 # 加密展示链接
 EnableEncryptedLink: false
 # 链接图标展示模式

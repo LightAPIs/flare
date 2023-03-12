@@ -6,7 +6,7 @@ echo "最近版本；$VERSION / $COMMIT"
 echo "$VERSION">RELEASE_VERSION
 echo "$COMMIT">RELEASE_COMMIT
 
-DOCKERHUB_REPO="soulteary/flare"
+DOCKERHUB_REPO="giterhub/flare"
 
 docker build -t "flare-base:$VERSION" -f docker/manual/Dockerfile.base .
 docker build -t "$DOCKERHUB_REPO:$VERSION-amd64" --build-arg FLARE_BASE_IMAGE="flare-base:$VERSION" -f docker/manual/Dockerfile.amd64 .

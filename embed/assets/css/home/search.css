@@ -27,3 +27,17 @@
   opacity: 1;
   transition: all 0.2s;
 }
+
+.apps-container .app-container.search-result-hide,
+#container-bookmakrs .bookmark-group-container.search-result-hide,
+.bookmark-list li.search-result-hide {
+  display: none;
+}
+
+#clear-search-content {
+  display: none;
+  cursor: pointer;
+}
+#clear-search-content.show-clear-button {
+  display: inline;
+}

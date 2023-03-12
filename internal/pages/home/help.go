@@ -3,8 +3,8 @@ package home
 import (
 	"html/template"
 
+	FlareIcons "github.com/soulteary/flare/internal/icons"
 	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
@@ -114,7 +114,7 @@ func GenerateHelpTemplate() template.HTML {
 		tpl = tpl + `
 			<div class="app-container" data-id="` + app.Icon + `">
 			<a href="` + app.URL + `" class="app-item" title="` + app.Name + `">
-			  <div class="app-icon">` + FlareMDI.GetIconByName(app.Icon) + `</div>
+			  <div class="app-icon">` + FlareIcons.GetIconByName(app.Icon) + `</div>
 			  <div class="app-text">
 				<p class="app-title">` + app.Name + `</p>
 				<p class="app-desc">` + desc + `</p>

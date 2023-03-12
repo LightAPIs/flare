@@ -16,8 +16,8 @@ import (
 	FlareState "github.com/soulteary/flare/internal/state"
 
 	FlareAuth "github.com/soulteary/flare/internal/auth"
+	FlareIcons "github.com/soulteary/flare/internal/icons"
 	FlareAssets "github.com/soulteary/flare/internal/resources/assets"
-	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
 	FlareTemplates "github.com/soulteary/flare/internal/resources/templates"
 
 	FlareDeprecated "github.com/soulteary/flare/internal/deprecated"
@@ -43,8 +43,12 @@ func startDaemon(AppFlags *FlareModel.Flags) {
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
 
-	router := gin.Default()
-	log := logger.GetLogger()
+	router := gin.New()
+	router.Use(gin.Recovery())
+	if AppFlags.DebugMode {
+		router.Use(gin.Logger())
+	}
+	log := logger.GetLogger(AppFlags.LogLevel)
 
 	router.Use(logger.Logger(log), gin.Recovery())
 
@@ -59,8 +63,8 @@ func startDaemon(AppFlags *FlareModel.Flags) {
 	FlareState.Init()
 	FlareAssets.RegisterRouting(router)
 
-	FlareMDI.Init()
-	FlareMDI.RegisterRouting(router)
+	FlareIcons.Init()
+	FlareIcons.RegisterRouting(router)
 
 	FlareTemplates.RegisterRouting(router)
 	FlareAppearance.RegisterRouting(router)

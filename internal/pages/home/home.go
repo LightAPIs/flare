@@ -1,14 +1,16 @@
 package home
 
 import (
-	"fmt"
+	"embed"
 	"html/template"
+	"io/fs"
 	"log"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/soulteary/memfs"
 
 	FlareAuth "github.com/soulteary/flare/internal/auth"
 	FlareData "github.com/soulteary/flare/internal/data"
@@ -18,7 +20,22 @@ import (
 	weather "github.com/soulteary/funny-china-weather"
 )
 
+var MemFs *memfs.FS
+
+const _ASSETS_BASE_DIR = "assets/home"
+const _ASSETS_WEB_URI = "/" + _ASSETS_BASE_DIR
+
+//go:embed home-assets
+var homeAssets embed.FS
+
 func init() {
+	MemFs = memfs.New()
+	err := MemFs.MkdirAll(_ASSETS_BASE_DIR, 0777)
+
+	if err != nil {
+		panic(err)
+	}
+
 	if FlareState.AppFlags.EnableOfflineMode {
 		return
 	}
@@ -36,6 +53,8 @@ func init() {
 }
 
 func RegisterRouting(router *gin.Engine) {
+	introAssets, _ := fs.Sub(homeAssets, "home-assets")
+	router.StaticFS(_ASSETS_WEB_URI, http.FS(introAssets))
 
 	if FlareState.AppFlags.Visibility != "PRIVATE" {
 		router.GET(FlareState.RegularPages.Home.Path, pageHome)
@@ -85,7 +104,7 @@ func renderHelp(c *gin.Context) {
 	}
 
 	if !FlareState.AppFlags.DisableCSP {
-		c.Header("Content-Security-Policy", "script-src 'none'; object-src 'none'; base-uri 'none'; require-trusted-types-for 'script'; report-uri 'none';")
+		c.Header("Content-Security-Policy", "script-src 'self'; object-src 'none'; base-uri 'none'; require-trusted-types-for 'script'; report-uri 'none';")
 	}
 
 	c.HTML(
@@ -106,7 +125,7 @@ func renderHelp(c *gin.Context) {
 
 			"HeroDate":  now.Format("2006年01月02日"),
 			"HeroTime":  now.Format("15:04:05"),
-			"HeroDay":   fmt.Sprintf(`%s`, days[now.Weekday()]),
+			"HeroDay":   days[now.Weekday()],
 			"Greetings": "帮助",
 
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
@@ -129,8 +148,10 @@ func renderHelp(c *gin.Context) {
 			// help 界面强制展示 Apps 模块，隐藏书签模块
 			"OptionShowApps":           true,
 			"OptionShowBookmarks":      false,
+			"HorizontalBookmarks":      false,
 			"OptionHideSettingsButton": options.HideSettingsButton,
 			"OptionHideHelpButton":     options.HideHelpButton,
+			"OptionHideTopButton":      options.HideTopButton,
 		},
 	)
 }
@@ -245,9 +266,10 @@ func pageBookmark(c *gin.Context) {
 
 			"Bookmarks": GenerateBookmarkTemplate(""),
 
-			"OptionTitle":              options.Title,
-			"OptionOpenBookmarkNewTab": options.OpenBookmarkNewTab,
-			"OptionShowBookmarks":      options.ShowBookmarks,
+			"OptionTitle":               options.Title,
+			"OptionOpenBookmarkNewTab":  options.OpenBookmarkNewTab,
+			"OptionShowBookmarks":       options.ShowBookmarks,
+			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
 		},
 	)
 }
@@ -313,7 +335,7 @@ func render(c *gin.Context, filter string) {
 	}
 
 	if !FlareState.AppFlags.DisableCSP {
-		c.Header("Content-Security-Policy", "script-src 'none'; object-src 'none'; base-uri 'none'; require-trusted-types-for 'script'; report-uri 'none';")
+		c.Header("Content-Security-Policy", "script-src 'self'; object-src 'none'; base-uri 'none'; require-trusted-types-for 'script'; report-uri 'none';")
 	}
 
 	bodyClassName := ""
@@ -339,7 +361,7 @@ func render(c *gin.Context, filter string) {
 
 			"HeroDate":  now.Format("2006年01月02日"),
 			"HeroTime":  now.Format("15:04:05"),
-			"HeroDay":   fmt.Sprintf(`%s`, days[now.Weekday()]),
+			"HeroDay":   days[now.Weekday()],
 			"Greetings": getGreeting(options.Greetings),
 
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
@@ -354,17 +376,19 @@ func render(c *gin.Context, filter string) {
 			"ShowSearchComponent":     options.ShowSearchComponent,
 			"DisabledSearchAutoFocus": options.DisabledSearchAutoFocus,
 
-			"OptionTitle":              options.Title,
-			"OptionFooter":             template.HTML(options.Footer),
-			"OptionOpenAppNewTab":      options.OpenAppNewTab,
-			"OptionOpenBookmarkNewTab": options.OpenBookmarkNewTab,
-			"OptionShowTitle":          options.ShowTitle,
-			"OptionShowDateTime":       options.ShowDateTime,
-			"OptionShowApps":           options.ShowApps,
-			"OptionShowBookmarks":      options.ShowBookmarks,
-			"OptionHideSettingsButton": options.HideSettingsButton,
-			"OptionHideHelpButton":     options.HideHelpButton,
-			"BodyClassName":            template.HTMLAttr(bodyClassName),
+			"OptionTitle":               options.Title,
+			"OptionFooter":              template.HTML(options.Footer),
+			"OptionOpenAppNewTab":       options.OpenAppNewTab,
+			"OptionOpenBookmarkNewTab":  options.OpenBookmarkNewTab,
+			"OptionShowTitle":           options.ShowTitle,
+			"OptionShowDateTime":        options.ShowDateTime,
+			"OptionShowApps":            options.ShowApps,
+			"OptionShowBookmarks":       options.ShowBookmarks,
+			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
+			"OptionHideSettingsButton":  options.HideSettingsButton,
+			"OptionHideHelpButton":      options.HideHelpButton,
+			"OptionHideTopButton":       options.HideTopButton,
+			"BodyClassName":             template.HTMLAttr(bodyClassName),
 		},
 	)
 }

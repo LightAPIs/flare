@@ -18,6 +18,11 @@
   {{ else }}
   <style type="text/css">{{.PageInlineStyle}}</style>
   {{ end }}
+  {{ if .OptionHideTopButton }}
+  {{ else }}
+  <script type="application/javascript" defer="defer" src="/assets/home/top.js"></script>
+  {{ end }}
+  <script type="application/javascript" defer="defer" src="/assets/home/search.js"></script>
   <meta name="description" content="Flare - self-hosted startpage for your server"/>
 </head>
 <body style="{{.PageAppearance}}" class="{{.BodyClassName}}">
@@ -26,17 +31,13 @@
 
       {{ if .ShowSearchComponent }}
       <div class="module-container" id="search-container">
-        <form action="/" method="POST">
-          {{ if .DisabledSearchAutoFocus }}
-          <input type="text" name="search" id="search" autocomplete="off" placeholder="{{.SearchKeyword}}"/>
-          {{ else }}
-          <input type="text" name="search" id="search" autocomplete="off" autofocus placeholder="{{.SearchKeyword}}"/>
-          {{ end}}
-          {{ if .HasKeyword }}
-          <a href="/">>> TIPS: 点此标签或再次敲击回车，返回首页</a>
-          {{ end }}
-          <label for="search" id="search-label">书签太多？试试搜索你想寻找的书签吧 :)</label>
-        </form>
+        {{ if .DisabledSearchAutoFocus }}
+        <input type="text" name="search" id="search" autocomplete="off" placeholder="{{.SearchKeyword}}"/>
+        {{ else }}
+        <input type="text" name="search" id="search" autocomplete="off" autofocus placeholder="{{.SearchKeyword}}"/>
+        {{ end}}
+        <span id="clear-search-content"> >> TIPS: 点此标签或按下 ESC 键，清空搜索内容</span>
+        <label for="search" id="search-label">书签太多？试试搜索你想寻找的书签吧 :)</label>
       </div>
       {{ end }}
 
@@ -85,10 +86,17 @@
       {{ end }}
 
       {{ if .OptionShowBookmarks }}
-      <div class="plugin-container clearfix" id="container-bookmakrs">
-        <h2><a href="{{.BookmarksURI}}">书签</a></h2>
-        {{.Bookmarks}}
-      </div>
+        {{ if .OptionHorizontalBookmarks }}
+        <div class="plugin-container use-horizontal-bookmarks clearfix" id="container-bookmakrs">
+          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
+          {{.Bookmarks}}
+        </div>
+        {{ else }}
+        <div class="plugin-container clearfix" id="container-bookmakrs">
+          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
+          {{.Bookmarks}}
+        </div>
+        {{ end }}
       {{ end }}
 
       <div class="toolbar-container">
@@ -116,6 +124,19 @@
                 style="fill: var(--color-background);"></path>
             </svg>
           </a>  
+        </div>
+        {{ end }}
+        {{ if .OptionHideTopButton }}
+        {{ else }}
+        <div class="toolbar-btn-bg toolbar-btn-help">
+          <span id="btn-scroll-top" alt="Scroll Top">
+            <span>Top</span>
+            <svg viewBox="0 0 24 24" width="24">
+              <path
+                d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,7L7,12H10V16H14V12H17L12,7Z"
+                style="fill:var(--color-background)"></path>
+            </svg>
+          </span>
         </div>
         {{ end }}
       </div>

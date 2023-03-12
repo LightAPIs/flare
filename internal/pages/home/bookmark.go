@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	FlareData "github.com/soulteary/flare/internal/data"
+	FlareIcons "github.com/soulteary/flare/internal/icons"
 	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
@@ -36,7 +36,7 @@ func GenerateBookmarkTemplate(filter string) template.HTML {
 			tpl += renderBookmarksWithCategories(&bookmarks, &category, &defaultCategory, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode)
 		}
 	} else {
-		tpl += `<div class="bookmark-group-container pull-left"><ul class="bookmark-list">` + renderBookmarksWithoutCategories(&bookmarks, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode) + `</ul></div>`
+		tpl += renderBookmarksWithoutCategories(&bookmarks, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode)
 	}
 
 	return template.HTML(tpl)
@@ -63,12 +63,12 @@ func renderBookmarksWithoutCategories(bookmarks *[]FlareModel.Bookmark, OpenBook
 		if strings.HasPrefix(bookmark.Icon, "http://") || strings.HasPrefix(bookmark.Icon, "https://") {
 			templateIcon = `<img src="` + bookmark.Icon + `"/>`
 		} else if bookmark.Icon != "" {
-			templateIcon = FlareMDI.GetIconByName(bookmark.Icon)
+			templateIcon = FlareIcons.GetIconByName(bookmark.Icon)
 		} else {
 			if IconMode == "FILLING" {
-				templateIcon = FlareState.GetYandexFavicon(bookmark.URL, FlareMDI.GetIconByName(bookmark.Icon))
+				templateIcon = FlareState.GetYandexFavicon(bookmark.URL, FlareIcons.GetIconByName(bookmark.Icon))
 			} else {
-				templateIcon = FlareMDI.GetIconByName(bookmark.Icon)
+				templateIcon = FlareIcons.GetIconByName(bookmark.Icon)
 			}
 		}
 
@@ -104,12 +104,12 @@ func renderBookmarksWithCategories(bookmarks *[]FlareModel.Bookmark, category *F
 		if strings.HasPrefix(bookmark.Icon, "http://") || strings.HasPrefix(bookmark.Icon, "https://") {
 			templateIcon = `<img src="` + bookmark.Icon + `"/>`
 		} else if bookmark.Icon != "" {
-			templateIcon = FlareMDI.GetIconByName(bookmark.Icon)
+			templateIcon = FlareIcons.GetIconByName(bookmark.Icon)
 		} else {
 			if IconMode == "FILLING" {
-				templateIcon = FlareState.GetYandexFavicon(bookmark.URL, FlareMDI.GetIconByName(bookmark.Icon))
+				templateIcon = FlareState.GetYandexFavicon(bookmark.URL, FlareIcons.GetIconByName(bookmark.Icon))
 			} else {
-				templateIcon = FlareMDI.GetIconByName(bookmark.Icon)
+				templateIcon = FlareIcons.GetIconByName(bookmark.Icon)
 			}
 		}
 

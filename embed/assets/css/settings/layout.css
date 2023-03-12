@@ -58,21 +58,15 @@
 }
 
 #page-settings.pageview .container {
-  min-width: 375px;
-}
-
-@media (min-width: 1201px) {
-  #page-settings.pageview .container {
-    width: 90%;
-    padding: 50px 250px;
+  min-width: 360px;
+  width: 90%;
+    padding: 50px 100px;
     margin: 0 auto;
-  }
 }
 
 @media (max-width: 1200px) {
   #page-settings.pageview .container {
     width: 90%;
-    margin: 0 auto;
   }
 }
 
@@ -80,15 +74,13 @@
   #page-settings.pageview .container {
     width: 90%;
     padding: 20px;
-    margin: 0 auto;
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 576px) {
   #page-settings.pageview .container {
     width: 100%;
     padding: 20px;
-    margin: 0 auto;
   }
 }
 

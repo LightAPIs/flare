@@ -12,7 +12,7 @@ func Parse() {
 	envs := parseEnvFile(parseEnvVars())
 	flags := parseCLI(envs)
 
-	log := logger.GetLogger()
+	log := logger.GetLogger(flags.LogLevel)
 	log.Println()
 	log.Println("程序服务端口", flags.Port)
 	log.Println("页面请求合并", flags.EnableMinimumRequest)

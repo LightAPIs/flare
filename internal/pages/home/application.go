@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	FlareData "github.com/soulteary/flare/internal/data"
+	FlareIcons "github.com/soulteary/flare/internal/icons"
 	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
@@ -54,12 +54,12 @@ func GenerateApplicationsTemplate(filter string) template.HTML {
 		if strings.HasPrefix(app.Icon, "http://") || strings.HasPrefix(app.Icon, "https://") {
 			templateIcon = `<img src="` + app.Icon + `"/>`
 		} else if app.Icon != "" {
-			templateIcon = FlareMDI.GetIconByName(app.Icon)
+			templateIcon = FlareIcons.GetIconByName(app.Icon)
 		} else {
 			if options.IconMode == "FILLING" {
-				templateIcon = FlareState.GetYandexFavicon(app.URL, FlareMDI.GetIconByName(app.Icon))
+				templateIcon = FlareState.GetYandexFavicon(app.URL, FlareIcons.GetIconByName(app.Icon))
 			} else {
-				templateIcon = FlareMDI.GetIconByName(app.Icon)
+				templateIcon = FlareIcons.GetIconByName(app.Icon)
 			}
 		}
 

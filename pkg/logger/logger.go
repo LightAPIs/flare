@@ -2,6 +2,7 @@ package logger
 
 import (
 	"os"
+	"strings"
 
 	"github.com/sirupsen/logrus"
 )
@@ -19,6 +20,20 @@ func init() {
 	instance.Out = os.Stdout
 }
 
-func GetLogger() *logrus.Logger {
+func GetLogger(level string) *logrus.Logger {
+	switch strings.ToLower(level) {
+	case "trace":
+		instance.Level = logrus.TraceLevel
+	case "debug":
+		instance.Level = logrus.DebugLevel
+	case "info":
+		instance.Level = logrus.InfoLevel
+	case "warn":
+		instance.Level = logrus.WarnLevel
+	case "error":
+		instance.Level = logrus.ErrorLevel
+	case "panic":
+		instance.Level = logrus.PanicLevel
+	}
 	return instance
 }

@@ -4,7 +4,7 @@ COMMIT=$(git rev-parse --short HEAD)
 
 echo "最近版本；$VERSION / $COMMIT"
 
-DOCKERHUB_REPO="soulteary/flare"
+DOCKERHUB_REPO="giterhub/flare"
 
 docker images | grep "$DOCKERHUB_REPO"
 

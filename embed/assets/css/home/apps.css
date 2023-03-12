@@ -19,7 +19,7 @@
 #container-apps .apps-container .app-item:hover {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 
 #container-apps .apps-container .app-icon {
@@ -35,7 +35,7 @@
 }
 
 /* 非inline模式 */
-#container-apps .apps-container .app-icon img{
+#container-apps .apps-container .app-icon img {
   display: block;
   width: 32px;
   height: 32px;
@@ -66,7 +66,6 @@
   font-size: 0.8em;
   opacity: 1;
 
-
   margin-top: 4px;
 
   white-space: nowrap;
@@ -74,8 +73,13 @@
   text-overflow: ellipsis;
 }
 
+@media (max-width: 1200px) {
+  #container-apps .apps-container .app-container {
+    width: 33.33%;
+  }
+}
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #container-apps .apps-container .app-container {
     width: 50%;
   }

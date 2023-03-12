@@ -27,10 +27,11 @@ const (
 	_DEFAULT_ENABLE_EDITOR            = true
 	_DEFAULT_VISIBILITY               = "DEFAULT"
 	_DEFAULT_DISABLE_CSP              = false
+	_DEFAULT_LOG_LEVEL                = "TRACE"
 )
 
 func parseEnvVars() (stor FlareModel.Flags) {
-	log := logger.GetLogger()
+	log := logger.GetLogger(_DEFAULT_LOG_LEVEL)
 
 	// 1. init default values
 	defaults := FlareModel.Envs{
@@ -43,6 +44,7 @@ func parseEnvVars() (stor FlareModel.Flags) {
 		EnableEditor:           _DEFAULT_ENABLE_EDITOR,
 		Visibility:             _DEFAULT_VISIBILITY,
 		DisableCSP:             _DEFAULT_DISABLE_CSP,
+		LogLevel:               _DEFAULT_LOG_LEVEL,
 	}
 
 	// 2. overwrite with user input
@@ -73,6 +75,7 @@ func parseEnvVars() (stor FlareModel.Flags) {
 	stor.EnableOfflineMode = defaults.EnableOfflineMode
 	stor.EnableEditor = defaults.EnableEditor
 	stor.DisableCSP = defaults.DisableCSP
+	stor.LogLevel = defaults.LogLevel
 
 	return stor
 }
@@ -106,6 +109,7 @@ func parseEnvFile(baseFlags FlareModel.Flags) FlareModel.Flags {
 	}
 
 	envs, err := ini.Load(".env")
+	fmt.Printf("Parse .env %v\n", envs)
 	if err != nil {
 		fmt.Println("Parse .env file error", envs)
 		return baseFlags
@@ -121,6 +125,7 @@ func parseEnvFile(baseFlags FlareModel.Flags) FlareModel.Flags {
 		EnableEditor:           _DEFAULT_ENABLE_EDITOR,
 		Visibility:             _DEFAULT_VISIBILITY,
 		DisableCSP:             _DEFAULT_DISABLE_CSP,
+		LogLevel:               _DEFAULT_LOG_LEVEL,
 	}
 
 	err = envs.MapTo(&defaults)
@@ -171,6 +176,8 @@ func parseCLI(baseFlags FlareModel.Flags) FlareModel.Flags {
 
 		_KEY_DISABLE_CSP       = "disable_csp"
 		_KEY_DISABLE_CSP_SHORT = "c"
+
+		_KEY_LOG_LEVEL = "log_level"
 	)
 
 	// port
@@ -194,6 +201,8 @@ func parseCLI(baseFlags FlareModel.Flags) FlareModel.Flags {
 	options.BoolVarP(&cliFlags.EnableEditor, _KEY_ENABLE_EDITOR, _KEY_ENABLE_EDITOR_SHORT, _DEFAULT_ENABLE_EDITOR, "启用编辑器")
 	// 禁用 CSP
 	options.BoolVarP(&cliFlags.DisableCSP, _KEY_DISABLE_CSP, _KEY_DISABLE_CSP_SHORT, _DEFAULT_DISABLE_CSP, "禁用CSP")
+	// 输出日志级别
+	options.StringVar(&cliFlags.LogLevel, _KEY_LOG_LEVEL, _DEFAULT_LOG_LEVEL, "输出日志级别")
 	// 其他
 	options.BoolVarP(&cliFlags.ShowVersion, "version", "v", false, "显示应用版本号")
 	options.BoolVarP(&cliFlags.ShowHelp, "help", "h", false, "显示帮助")
@@ -262,6 +271,10 @@ func parseCLI(baseFlags FlareModel.Flags) FlareModel.Flags {
 		baseFlags.EnableEditor = cliFlags.EnableEditor
 	}
 
+	if keys[_KEY_LOG_LEVEL] {
+		baseFlags.LogLevel = cliFlags.LogLevel
+	}
+
 	// Forcibly disable `debug mode` in non-development mode
 	if strings.ToLower(version.Version) != "dev" {
 		baseFlags.DebugMode = false
@@ -292,7 +305,7 @@ func excuteCLI(cliFlags *FlareModel.Flags, options *flags.FlagSet) (exit bool) {
 func getVersion(echo bool) string {
 	programVersion := fmt.Sprintf("Flare v%s-%s %s/%s BuildDate=%s\n", version.Version, strings.ToUpper(version.Commit), runtime.GOOS, runtime.GOARCH, version.BuildDate)
 	if echo {
-		log := logger.GetLogger()
+		log := logger.GetLogger(_DEFAULT_LOG_LEVEL)
 		log.Println(programVersion)
 	}
 	return programVersion
