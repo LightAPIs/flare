@@ -23,15 +23,18 @@
 }
 
 #container-apps .apps-container .app-icon {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  left: 5px;
+  margin: 2px 5px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.05)
 }
 
 #container-apps .apps-container .app-icon * {
   width: 90%;
   color: var(--color-primary);
+  border-radius: 6px;
 }
 
 /* 非inline模式 */
@@ -47,7 +50,7 @@
 }
 
 #container-apps .apps-container .app-text {
-  margin-left: 35px;
+  margin-left: 42px;
 }
 
 #container-apps .apps-container .app-title {

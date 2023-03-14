@@ -263,6 +263,7 @@ func pageBookmark(c *gin.Context) {
 
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
+			"SettingsURI":     FlareState.RegularPages.Settings.Path,
 
 			"Bookmarks": GenerateBookmarkTemplate(""),
 
@@ -270,6 +271,9 @@ func pageBookmark(c *gin.Context) {
 			"OptionOpenBookmarkNewTab":  options.OpenBookmarkNewTab,
 			"OptionShowBookmarks":       options.ShowBookmarks,
 			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
+			"OptionHideSettingsButton":  options.HideSettingsButton,
+			"OptionHideHelpButton":      options.HideHelpButton,
+			"OptionHideTopButton":       options.HideTopButton,
 		},
 	)
 }
@@ -286,6 +290,7 @@ func pageApplication(c *gin.Context) {
 
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
+			"SettingsURI":     FlareState.RegularPages.Settings.Path,
 			"Applications":    GenerateApplicationsTemplate(""),
 
 			"PageName":       "应用",
@@ -294,9 +299,12 @@ func pageApplication(c *gin.Context) {
 
 			// "SettingPages": FlareState.SettingPages,
 
-			"OptionTitle":         options.Title,
-			"OptionOpenAppNewTab": options.OpenAppNewTab,
-			"OptionShowApps":      options.ShowApps,
+			"OptionTitle":              options.Title,
+			"OptionOpenAppNewTab":      options.OpenAppNewTab,
+			"OptionShowApps":           options.ShowApps,
+			"OptionHideSettingsButton": options.HideSettingsButton,
+			"OptionHideHelpButton":     options.HideHelpButton,
+			"OptionHideTopButton":      options.HideTopButton,
 		},
 	)
 }

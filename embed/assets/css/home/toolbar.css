@@ -1,6 +1,5 @@
-
 .toolbar-container {
-  width: 38px;
+  width: 35px;
   position: fixed;
   bottom: var(--spacing-ui);
   left: var(--spacing-ui);
@@ -10,8 +9,8 @@
   -webkit-align-items: center;
   align-items: center;
   visibility: visible;
+  z-index: 1;
 }
-
 
 #btn-open-settings,
 #btn-open-help,
@@ -41,8 +40,7 @@
   opacity: 0;
 }
 
-
-.toolbar-btn-bg{
+.toolbar-btn-bg {
   width: 35px;
   height: 35px;
   background-color: var(--color-accent);
@@ -61,7 +59,8 @@
 .toolbar-btn-bg:hover {
   opacity: 1;
 }
-.toolbar-btn-settings, 
-.toolbar-btn-help {
-  margin: 0 0 10px 0;
+.toolbar-btn-settings,
+.toolbar-btn-help,
+.toolbar-btn-top {
+  margin: 10px 0 0 0;
 }
