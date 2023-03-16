@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group">
-            <label for="settings-keep-letter-case">保持配置和界面链接大小写一致</label>
+            <label for="settings-keep-letter-case">保持应用及书签分类名的大小写与配置中一致</label>
             {{ if .OptionKeepLetterCase }}
             <select name="keep-letter-case" id="settings-keep-letter-case">
                 <option value="1" selected>是</option>
@@ -161,14 +161,14 @@
         </div>
 
         <div class="form-group">
-            <label for="settings-horizontal-bookmarks">水平排列书签</label>
-            {{ if .OptionHorizontalBookmarks }}
-            <select name="horizontal-bookmarks" id="settings-horizontal-bookmarks">
+            <label for="settings-show-sidebar">展示书签分类侧边栏</label>
+            {{ if .OptionShowSidebar }}
+            <select name="show-sidebar" id="settings-show-sidebar">
                 <option value="1" selected>是</option>
                 <option value="0">否</option>
             </select>
             {{ else }}
-            <select name="horizontal-bookmarks" id="settings-horizontal-bookmarks">
+            <select name="show-sidebar" id="settings-show-sidebar">
                 <option value="0" selected>否</option>
                 <option value="1">是</option>
             </select>

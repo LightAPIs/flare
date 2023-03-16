@@ -15,7 +15,7 @@ func initAppConfig(filePath string) (result FlareModel.Application, err error) {
 # 应用标题
 Title: "flare"
 # 应用页脚
-Footer: 由 <a href="https://github.com/soulteary/docker-flare">Flare</a> ❤️ 强力驱动
+Footer: 由 <a href="https://github.com/LightAPIs/flaring">Flare</a> ❤️ 强力驱动
 # 在新窗口中打开应用
 OpenAppNewTab: true
 # 在新窗口中打开书签
@@ -34,8 +34,8 @@ ShowDateTime: true
 ShowApps: true
 # 展示书签组件
 ShowBookmarks: true
-# 水平排列书签
-HorizontalBookmarks: false
+# 展示书签分类侧边栏
+ShowSidebar: true
 # 隐藏界面中的设置按钮
 HideSettingButton: false
 # 隐藏界面中的帮助按钮
@@ -52,7 +52,7 @@ Theme: "blackboard"
 ShowWeather: true
 # 天气组件使用的位置，仅在程序自动识别出错时，需要修改
 Location: "北京市"
-# 保持界面中链接大小写和配置中一致
+# 保持应用及书签分类名的大小写与配置中一致
 KeepLetterCase: false
 `)
 

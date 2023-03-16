@@ -14,8 +14,9 @@
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持可选水平排列书签的功能。
 1. 添加支持使用 [Simple Icons](https://simpleicons.org/) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。(*注：在 [Flare](https://github.com/soulteary/flare) v0.4.0 后便会添加此功能。*)
+1. 调整为水平排列书签。(*v0.4.0-20230316*)
+1. 添加可选的侧边栏功能。(*v0.4.0-20230316*)
 1. 调整基础样式，以优化在移动端下的使用体验。
 
 ## 其他改动
@@ -32,14 +33,26 @@
 
 ## 程序截图
 
-**默认情况：**
+**桌面端默认：**
 
-![Flaring](https://gcore.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202303121516709.jpg)
+![Desktop](https://gcore.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202303162130685.jpg)
 
-**水平排列书签：**
+**移动端默认：**
 
-![HorizontalBookmarks](https://gcore.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202303121518536.jpg)
+![Mobile](https://gcore.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202303162131742.jpg)
 
 ## Docker 部署
 
-Docker Hub 镜像：[giterhub/flare](https://hub.docker.com/r/giterhub/flare)，部署可以参考：[docker-flare](https://github.com/soulteary/docker-flare)。
+Docker Hub 镜像：[giterhub/flare](https://hub.docker.com/r/giterhub/flare)，
+
+**快速部署：**
+
+```sh
+# pull
+docker pull giterhub/flare:latest
+
+# run
+docker run -p 5005:5005 -d --name flare --mount type=bind,source=/flare/app,target=/app -e FLARE_LOG_LEVEL=ERROR giterhub/flare:latest
+```
+
+其他环境变量及使用方法可以参考：[docker-flare](https://github.com/soulteary/docker-flare)。

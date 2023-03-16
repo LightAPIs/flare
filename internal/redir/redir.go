@@ -15,7 +15,7 @@ import (
 
 func RegisterRouting(router *gin.Engine) {
 
-	internalError := []byte(`<html><p>找不到匹配的跳转地址，请确认地址未被人为修改。</p><p>或前往 <a href="https://github.com/soulteary/docker-flare/issues/" target="_blank">https://github.com/soulteary/docker-flare/issues/</a> 反馈使用中的问题，谢谢！</html>`)
+	internalError := []byte(`<html><p>找不到匹配的跳转地址，请确认地址未被人为修改。</p><p>或前往 <a href="https://github.com/LightAPIs/flaring/issues/" target="_blank">LightAPIs/flaring</a> 反馈使用中的问题，谢谢！</html>`)
 
 	router.GET(FlareState.MiscPages.RedirHome.Path, func(c *gin.Context) {
 		c.Redirect(http.StatusFound, FlareState.RegularPages.Home.Path)

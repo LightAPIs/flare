@@ -14,10 +14,14 @@
       ev.preventDefault();
       scrollTop();
     });
-    topBtn.addEventListener('touchstart', ev => {
-      ev.stopPropagation();
-      ev.preventDefault();
-      scrollTop();
-    });
+    topBtn.addEventListener(
+      'touchstart',
+      ev => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        scrollTop();
+      },
+      { passive: false }
+    );
   }
 })();

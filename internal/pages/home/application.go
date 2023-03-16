@@ -6,27 +6,14 @@ import (
 
 	FlareData "github.com/soulteary/flare/internal/data"
 	FlareIcons "github.com/soulteary/flare/internal/icons"
-	FlareModel "github.com/soulteary/flare/internal/model"
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
-func GenerateApplicationsTemplate(filter string) template.HTML {
+func GenerateApplicationsTemplate() template.HTML {
 	options := FlareData.GetAllSettingsOptions()
 	appsData := FlareData.LoadFavoriteBookmarks()
-
-	var apps []FlareModel.Bookmark
+	apps := appsData.Items
 	tpl := ""
-
-	if filter != "" {
-		filterLower := strings.ToLower(filter)
-		for _, bookmark := range appsData.Items {
-			if strings.Contains(strings.ToLower(bookmark.Name), filterLower) || strings.Contains(strings.ToLower(bookmark.URL), filterLower) || strings.Contains(strings.ToLower(bookmark.Desc), filterLower) {
-				apps = append(apps, bookmark)
-			}
-		}
-	} else {
-		apps = appsData.Items
-	}
 
 	for _, app := range apps {
 

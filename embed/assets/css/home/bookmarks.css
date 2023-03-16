@@ -11,18 +11,15 @@
 
 #container-bookmakrs .bookmark-group-container {
   display: inline-block;
-  width: 16.66%;
+  width: 100%;
   margin-bottom: 10px;
   float: none;
 }
 
-#container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container {
-  width: 100%;
-}
-
-#container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container .bookmark-list li {
+#container-bookmakrs .bookmark-group-container .bookmark-list li {
   float: left;
   width: 16.66%;
+  padding: 1px;
 }
 
 #container-bookmakrs .bookmark-group-container h3 {
@@ -35,10 +32,6 @@
 #container-bookmakrs .bookmark-group-container .bookmark-list {
   list-style: none;
   margin: 5px 0;
-}
-
-#container-bookmakrs .bookmark-group-container .bookmark-list li {
-  padding: 1px;
 }
 
 #container-bookmakrs .bookmark-group-container .bookmark-list a.bookmark {
@@ -80,57 +73,25 @@
 }
 
 @media (max-width: 1600px) {
-  #container-bookmakrs .bookmark-group-container {
-    width: 20%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container {
-    width: 100%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container .bookmark-list li {
+  #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 20%;
   }
 }
 
 @media (max-width: 1200px) {
-  #container-bookmakrs .bookmark-group-container {
-    width: 25%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container {
-    width: 100%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container .bookmark-list li {
+  #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 25%;
   }
 }
 
 @media (max-width: 992px) {
-  #container-bookmakrs .bookmark-group-container {
-    width: 33.33%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container {
-    width: 100%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container .bookmark-list li {
+  #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 33.33%;
   }
 }
 
 @media (max-width: 768px) {
-  #container-bookmakrs .bookmark-group-container {
-    width: 50%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container {
-    width: 100%;
-  }
-
-  #container-bookmakrs.use-horizontal-bookmarks .bookmark-group-container .bookmark-list li {
+  #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 50%;
   }
 }

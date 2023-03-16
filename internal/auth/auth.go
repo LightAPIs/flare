@@ -31,7 +31,7 @@ func RequestHandle(router *gin.Engine) {
 	}
 }
 
-var commonText = `<a href="` + FlareState.SettingPages.Others.Path + `">返回重试</a></p><p>或前往 <a href="https://github.com/soulteary/docker-flare/issues/" target="_blank">https://github.com/soulteary/docker-flare/issues/</a> 反馈使用中的问题，谢谢！`
+var commonText = `<a href="` + FlareState.SettingPages.Others.Path + `">返回重试</a></p><p>或前往 <a href="https://github.com/LightAPIs/flaring/issues/" target="_blank">LightAPIs/flaring</a> 反馈使用中的问题，谢谢！`
 var internalErrorInput = []byte(`<html><p>请填写正确的用户名和密码 ` + commonText + `</html>`)
 var internalErrorEmpty = []byte(`<html><p>用户名或密码不能为空 ` + commonText + `</html>`)
 var internalErrorSave = []byte(`<html><p>程序内部错误，保存登陆状态失败 ` + commonText + `</html>`)

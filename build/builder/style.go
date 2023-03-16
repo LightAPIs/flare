@@ -20,6 +20,7 @@ func TaskForStyles(gofile string) {
 		"embed/assets/css/home/bookmarks.css",
 		"embed/assets/css/home/hero.css",
 		"embed/assets/css/home/search.css",
+		"embed/assets/css/home/sidebar.css",
 		"embed/assets/css/home/toolbar.css",
 		// settings
 		"embed/assets/css/settings/layout.css",

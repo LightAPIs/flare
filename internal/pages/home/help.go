@@ -94,7 +94,7 @@ func GenerateHelpTemplate() template.HTML {
 		},
 		{
 			Name: "问题反馈",
-			URL:  "https://github.com/soulteary/docker-flare/issues",
+			URL:  "https://github.com/LightAPIs/flaring/issues",
 			Icon: "crownCircle",
 			Desc: "GitHub Issues",
 		},

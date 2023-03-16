@@ -59,14 +59,12 @@ func RegisterRouting(router *gin.Engine) {
 	if FlareState.AppFlags.Visibility != "PRIVATE" {
 		router.GET(FlareState.RegularPages.Home.Path, pageHome)
 		router.GET(FlareState.RegularPages.Help.Path, renderHelp)
-		router.POST(FlareState.RegularPages.Home.Path, pageSearch)
 
 		router.GET(FlareState.RegularPages.Applications.Path, pageApplication)
 		router.GET(FlareState.RegularPages.Bookmarks.Path, pageBookmark)
 	} else {
 		router.GET(FlareState.RegularPages.Home.Path, FlareAuth.AuthRequired, pageHome)
 		router.GET(FlareState.RegularPages.Help.Path, FlareAuth.AuthRequired, renderHelp)
-		router.POST(FlareState.RegularPages.Home.Path, FlareAuth.AuthRequired, pageSearch)
 
 		router.GET(FlareState.RegularPages.Applications.Path, FlareAuth.AuthRequired, pageApplication)
 		router.GET(FlareState.RegularPages.Bookmarks.Path, FlareAuth.AuthRequired, pageBookmark)
@@ -74,7 +72,7 @@ func RegisterRouting(router *gin.Engine) {
 }
 
 func pageHome(c *gin.Context) {
-	render(c, "")
+	render(c)
 }
 
 func renderHelp(c *gin.Context) {
@@ -124,7 +122,6 @@ func renderHelp(c *gin.Context) {
 			"WeatherIcon":       weather.GetSVGCodeByName(weatherData.ConditionCode),
 
 			"HeroDate":  now.Format("2006年01月02日"),
-			"HeroTime":  now.Format("15:04:05"),
 			"HeroDay":   days[now.Weekday()],
 			"Greetings": "帮助",
 
@@ -132,8 +129,6 @@ func renderHelp(c *gin.Context) {
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
 			"SettingsURI":     FlareState.RegularPages.Settings.Path,
 			"Applications":    GenerateHelpTemplate(),
-			"SearchKeyword":   template.HTML(""),
-			"HasKeyword":      false,
 
 			// SearchProvider          string // 默认的搜索引擎
 			"ShowSearchComponent":     options.ShowSearchComponent,
@@ -148,33 +143,12 @@ func renderHelp(c *gin.Context) {
 			// help 界面强制展示 Apps 模块，隐藏书签模块
 			"OptionShowApps":           true,
 			"OptionShowBookmarks":      false,
-			"HorizontalBookmarks":      false,
+			"OptionShowSidebar":        false,
 			"OptionHideSettingsButton": options.HideSettingsButton,
 			"OptionHideHelpButton":     options.HideHelpButton,
 			"OptionHideTopButton":      options.HideTopButton,
 		},
 	)
-}
-
-func pageSearch(c *gin.Context) {
-
-	type UpdateBody struct {
-		Search string `form:"search"`
-	}
-
-	var body UpdateBody
-	if c.ShouldBind(&body) != nil {
-		render(c, "")
-		return
-	}
-
-	search := strings.TrimSpace(body.Search)
-	if len(search) > 50 {
-		render(c, "")
-		return
-	}
-
-	render(c, search)
 }
 
 var _CACHE_WEATHER_DATA FlareModel.Weather
@@ -265,15 +239,15 @@ func pageBookmark(c *gin.Context) {
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
 			"SettingsURI":     FlareState.RegularPages.Settings.Path,
 
-			"Bookmarks": GenerateBookmarkTemplate(""),
+			"Bookmarks": GenerateBookmarkTemplate(),
 
-			"OptionTitle":               options.Title,
-			"OptionOpenBookmarkNewTab":  options.OpenBookmarkNewTab,
-			"OptionShowBookmarks":       options.ShowBookmarks,
-			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
-			"OptionHideSettingsButton":  options.HideSettingsButton,
-			"OptionHideHelpButton":      options.HideHelpButton,
-			"OptionHideTopButton":       options.HideTopButton,
+			"OptionTitle":              options.Title,
+			"OptionOpenBookmarkNewTab": options.OpenBookmarkNewTab,
+			"OptionShowBookmarks":      options.ShowBookmarks,
+			"OptionShowSidebar":        options.ShowSidebar,
+			"OptionHideSettingsButton": options.HideSettingsButton,
+			"OptionHideHelpButton":     options.HideHelpButton,
+			"OptionHideTopButton":      options.HideTopButton,
 		},
 	)
 }
@@ -291,7 +265,7 @@ func pageApplication(c *gin.Context) {
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
 			"SettingsURI":     FlareState.RegularPages.Settings.Path,
-			"Applications":    GenerateApplicationsTemplate(""),
+			"Applications":    GenerateApplicationsTemplate(),
 
 			"PageName":       "应用",
 			"SubPage":        true,
@@ -309,15 +283,8 @@ func pageApplication(c *gin.Context) {
 	)
 }
 
-func render(c *gin.Context, filter string) {
+func render(c *gin.Context) {
 	options := FlareData.GetAllSettingsOptions()
-
-	hasKeyword := false
-	searchKeyword := ""
-	if filter != "" {
-		searchKeyword = "搜索结果: " + filter
-		hasKeyword = true
-	}
 
 	now := time.Now()
 
@@ -368,35 +335,33 @@ func render(c *gin.Context, filter string) {
 			"WeatherIcon":       weather.GetSVGCodeByName(weatherData.ConditionCode),
 
 			"HeroDate":  now.Format("2006年01月02日"),
-			"HeroTime":  now.Format("15:04:05"),
 			"HeroDay":   days[now.Weekday()],
 			"Greetings": getGreeting(options.Greetings),
 
 			"BookmarksURI":    FlareState.RegularPages.Bookmarks.Path,
 			"ApplicationsURI": FlareState.RegularPages.Applications.Path,
 			"SettingsURI":     FlareState.RegularPages.Settings.Path,
-			"Applications":    GenerateApplicationsTemplate(filter),
-			"Bookmarks":       GenerateBookmarkTemplate(filter),
-			"SearchKeyword":   template.HTML(searchKeyword),
-			"HasKeyword":      hasKeyword,
+			"Applications":    GenerateApplicationsTemplate(),
+			"Bookmarks":       GenerateBookmarkTemplate(),
+			"Sidebar":         GenerateSidebarTemplate(),
 
 			// SearchProvider          string // 默认的搜索引擎
 			"ShowSearchComponent":     options.ShowSearchComponent,
 			"DisabledSearchAutoFocus": options.DisabledSearchAutoFocus,
 
-			"OptionTitle":               options.Title,
-			"OptionFooter":              template.HTML(options.Footer),
-			"OptionOpenAppNewTab":       options.OpenAppNewTab,
-			"OptionOpenBookmarkNewTab":  options.OpenBookmarkNewTab,
-			"OptionShowTitle":           options.ShowTitle,
-			"OptionShowDateTime":        options.ShowDateTime,
-			"OptionShowApps":            options.ShowApps,
-			"OptionShowBookmarks":       options.ShowBookmarks,
-			"OptionHorizontalBookmarks": options.HorizontalBookmarks,
-			"OptionHideSettingsButton":  options.HideSettingsButton,
-			"OptionHideHelpButton":      options.HideHelpButton,
-			"OptionHideTopButton":       options.HideTopButton,
-			"BodyClassName":             template.HTMLAttr(bodyClassName),
+			"OptionTitle":              options.Title,
+			"OptionFooter":             template.HTML(options.Footer),
+			"OptionOpenAppNewTab":      options.OpenAppNewTab,
+			"OptionOpenBookmarkNewTab": options.OpenBookmarkNewTab,
+			"OptionShowTitle":          options.ShowTitle,
+			"OptionShowDateTime":       options.ShowDateTime,
+			"OptionShowApps":           options.ShowApps,
+			"OptionShowBookmarks":      options.ShowBookmarks,
+			"OptionShowSidebar":        options.ShowSidebar,
+			"OptionHideSettingsButton": options.HideSettingsButton,
+			"OptionHideHelpButton":     options.HideHelpButton,
+			"OptionHideTopButton":      options.HideTopButton,
+			"BodyClassName":            template.HTMLAttr(bodyClassName),
 		},
 	)
 }

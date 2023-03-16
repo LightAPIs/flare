@@ -2,7 +2,7 @@
   width: 35px;
   position: fixed;
   bottom: var(--spacing-ui);
-  left: var(--spacing-ui);
+  right: var(--spacing-ui);
   display: block;
   -webkit-justify-content: center;
   justify-content: center;
@@ -51,9 +51,7 @@
   -webkit-align-items: center;
   align-items: center;
   transition: all 0.3s;
-
   visibility: visible;
-
   opacity: 0.25;
 }
 .toolbar-btn-bg:hover {

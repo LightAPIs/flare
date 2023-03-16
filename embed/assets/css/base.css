@@ -13,6 +13,16 @@ body {
   transition: background-color 0.3s;
   font-family: Roboto, sans-serif;
   font-size: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-background);
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
 }
 
 h1,

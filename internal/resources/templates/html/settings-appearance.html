@@ -15,7 +15,7 @@
 <select name=enable-encrypted-link id=settings-enable-encrypted-link><option value=1 selected>是<option value=0>否</select>
 {{ else }}
 <select name=enable-encrypted-link id=settings-enable-encrypted-link><option value=0 selected>否<option value=1>是</select>
-{{ end }}</div><div class=form-group><label for=settings-keep-letter-case>保持配置和界面链接大小写一致</label>
+{{ end }}</div><div class=form-group><label for=settings-keep-letter-case>保持应用及书签分类名的大小写与配置中一致</label>
 {{ if .OptionKeepLetterCase }}
 <select name=keep-letter-case id=settings-keep-letter-case><option value=1 selected>是<option value=0>否</select>
 {{ else }}
@@ -47,11 +47,11 @@
 <select name=show-bookmarks id=settings-show-bookmarks><option value=1 selected>是<option value=0>否</select>
 {{ else }}
 <select name=show-bookmarks id=settings-show-bookmarks><option value=0 selected>否<option value=1>是</select>
-{{ end }}</div><div class=form-group><label for=settings-horizontal-bookmarks>水平排列书签</label>
-{{ if .OptionHorizontalBookmarks }}
-<select name=horizontal-bookmarks id=settings-horizontal-bookmarks><option value=1 selected>是<option value=0>否</select>
+{{ end }}</div><div class=form-group><label for=settings-show-sidebar>展示书签分类侧边栏</label>
+{{ if .OptionShowSidebar }}
+<select name=show-sidebar id=settings-show-sidebar><option value=1 selected>是<option value=0>否</select>
 {{ else }}
-<select name=horizontal-bookmarks id=settings-horizontal-bookmarks><option value=0 selected>否<option value=1>是</select>
+<select name=show-sidebar id=settings-show-sidebar><option value=0 selected>否<option value=1>是</select>
 {{ end }}</div><div class=form-group><label for=settings-hide-settings-button>隐藏首页设置按钮</label>
 {{ if .OptionHideSettingsButton }}
 <select name=hide-settings-button id=settings-hide-settings-button><option value=1 selected>是<option value=0>否</select>

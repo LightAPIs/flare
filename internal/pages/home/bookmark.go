@@ -11,24 +11,12 @@ import (
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
-func GenerateBookmarkTemplate(filter string) template.HTML {
+func GenerateBookmarkTemplate() template.HTML {
 	options := FlareData.GetAllSettingsOptions()
 	bookmarksData := FlareData.LoadNormalBookmarks()
 	tpl := ""
 
-	var bookmarks []FlareModel.Bookmark
-
-	if filter != "" {
-		filterLower := strings.ToLower(filter)
-
-		for _, bookmark := range bookmarksData.Items {
-			if strings.Contains(strings.ToLower(bookmark.Name), filterLower) || strings.Contains(strings.ToLower(bookmark.URL), filterLower) {
-				bookmarks = append(bookmarks, bookmark)
-			}
-		}
-	} else {
-		bookmarks = bookmarksData.Items
-	}
+	bookmarks := bookmarksData.Items
 
 	if len(bookmarksData.Categories) > 0 {
 		defaultCategory := bookmarksData.Categories[0]
@@ -138,5 +126,5 @@ func renderBookmarksWithCategories(bookmarks *[]FlareModel.Bookmark, category *F
 		return ``
 	}
 
-	return `<div class="bookmark-group-container pull-left"><h3 class="bookmark-group-title">` + category.Name + `</h3><ul class="bookmark-list">` + tpl + `</ul></div>`
+	return `<div class="bookmark-group-container pull-left"><h3 class="bookmark-group-title" data-set-category="` + category.ID + `">` + category.Name + `</h3><ul class="bookmark-list">` + tpl + `</ul></div>`
 }

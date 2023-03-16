@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/assets/css/home/hero.css">
   <link rel="stylesheet" href="/assets/css/home/apps.css">
   <link rel="stylesheet" href="/assets/css/home/bookmarks.css">
+  <link rel="stylesheet" href="/assets/css/home/sidebar.css">
   <link rel="stylesheet" href="/assets/css/home/toolbar.css">
   {{ else }}
   <style type="text/css">{{.PageInlineStyle}}</style>
@@ -22,6 +23,9 @@
   {{ else }}
   <script type="application/javascript" defer="defer" src="/assets/home/top.js"></script>
   {{ end }}
+  {{ if.OptionShowSidebar }}
+  <script type="application/javascript" defer="defer" src="/assets/home/sidebar.js"></script>
+  {{ end }}
   <script type="application/javascript" defer="defer" src="/assets/home/search.js"></script>
   <meta name="description" content="Flare - self-hosted startpage for your server"/>
 </head>
@@ -29,12 +33,20 @@
   <div class="pageview" id="page-home">
     <div class="container no-select">
 
+      {{ if .OptionShowBookmarks }}
+        {{ if .OptionShowSidebar }}
+        <div class="module-container" id="sidebar-container">
+          {{.Sidebar}}
+        </div>
+        {{ end }}
+      {{ end }}
+
       {{ if .ShowSearchComponent }}
       <div class="module-container" id="search-container">
         {{ if .DisabledSearchAutoFocus }}
-        <input type="text" name="search" id="search" autocomplete="off" placeholder="{{.SearchKeyword}}"/>
+        <input type="text" name="search" id="search" autocomplete="off"/>
         {{ else }}
-        <input type="text" name="search" id="search" autocomplete="off" autofocus placeholder="{{.SearchKeyword}}"/>
+        <input type="text" name="search" id="search" autocomplete="off" autofocus/>
         {{ end}}
         <span id="clear-search-content"> >> TIPS: 点此标签或按下 ESC 键，清空搜索内容</span>
         <label for="search" id="search-label">书签太多？试试搜索你想寻找的书签吧 :)</label>
@@ -45,7 +57,7 @@
         <div id="plugin-datetime">
           {{ if .OptionShowDateTime }}
           <p>
-            <span>{{.HeroDate}}</span> <span>{{.HeroDay}}</span> <span>{{.HeroTime}}</span>
+            <span>{{.HeroDate}}</span> <span>{{.HeroDay}}</span>
           </p>
           {{ end }}
           {{ if .OptionShowTitle }}
@@ -86,17 +98,10 @@
       {{ end }}
 
       {{ if .OptionShowBookmarks }}
-        {{ if .OptionHorizontalBookmarks }}
-        <div class="plugin-container use-horizontal-bookmarks clearfix" id="container-bookmakrs">
-          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
-          {{.Bookmarks}}
-        </div>
-        {{ else }}
-        <div class="plugin-container clearfix" id="container-bookmakrs">
-          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
-          {{.Bookmarks}}
-        </div>
-        {{ end }}
+      <div class="plugin-container clearfix" id="container-bookmakrs">
+        <h2><a href="{{.BookmarksURI}}">书签</a></h2>
+        {{.Bookmarks}}
+      </div>
       {{ end }}
 
       <div class="toolbar-container">
