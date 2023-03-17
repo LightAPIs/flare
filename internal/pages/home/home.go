@@ -240,6 +240,7 @@ func pageBookmark(c *gin.Context) {
 			"SettingsURI":     FlareState.RegularPages.Settings.Path,
 
 			"Bookmarks": GenerateBookmarkTemplate(),
+			"Sidebar":   GenerateSidebarTemplate(),
 
 			"OptionTitle":              options.Title,
 			"OptionOpenBookmarkNewTab": options.OpenBookmarkNewTab,
