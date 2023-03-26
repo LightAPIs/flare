@@ -32,7 +32,7 @@
         ev.preventDefault();
         const categoryTitle = document.querySelector(`[data-set-category="${id}"]`);
         if (categoryTitle) {
-          const offsetTop = categoryTitle.offsetTop;
+          const offsetTop = categoryTitle.offsetTop - 8;
           doc.scrollTo({
             top: offsetTop,
             behavior: 'smooth',

@@ -57,6 +57,7 @@ func UpdateAppearance(update FlareModel.Application) bool {
 	options.ShowApps = update.ShowApps
 	options.ShowBookmarks = update.ShowBookmarks
 	options.ShowSidebar = update.ShowSidebar
+	options.VerticalBookmarks = update.VerticalBookmarks
 	options.HideSettingsButton = update.HideSettingsButton
 	options.HideHelpButton = update.HideHelpButton
 	options.HideTopButton = update.HideTopButton

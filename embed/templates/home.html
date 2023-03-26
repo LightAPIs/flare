@@ -98,10 +98,17 @@
       {{ end }}
 
       {{ if .OptionShowBookmarks }}
-      <div class="plugin-container clearfix" id="container-bookmakrs">
-        <h2><a href="{{.BookmarksURI}}">书签</a></h2>
-        {{.Bookmarks}}
-      </div>
+        {{ if .OptionVerticalBookmarks }}
+        <div class="plugin-container use-vertical-bookmarks clearfix" id="container-bookmakrs">
+          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
+          {{.Bookmarks}}
+        </div>
+        {{ else }}
+        <div class="plugin-container clearfix" id="container-bookmakrs">
+          <h2><a href="{{.BookmarksURI}}">书签</a></h2>
+          {{.Bookmarks}}
+        </div>
+        {{ end }}
       {{ end }}
 
       <div class="toolbar-container">

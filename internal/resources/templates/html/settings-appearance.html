@@ -52,6 +52,11 @@
 <select name=show-sidebar id=settings-show-sidebar><option value=1 selected>是<option value=0>否</select>
 {{ else }}
 <select name=show-sidebar id=settings-show-sidebar><option value=0 selected>否<option value=1>是</select>
+{{ end }}</div><div class=form-group><label for=settings-vertical-bookmarks>垂直排列书签</label>
+{{ if .OptionVerticalBookmarks }}
+<select name=vertical-bookmarks id=settings-vertical-bookmarks><option value=1 selected>是<option value=0>否</select>
+{{ else }}
+<select name=vertical-bookmarks id=settings-vertical-bookmarks><option value=0 selected>否<option value=1>是</select>
 {{ end }}</div><div class=form-group><label for=settings-hide-settings-button>隐藏首页设置按钮</label>
 {{ if .OptionHideSettingsButton }}
 <select name=hide-settings-button id=settings-hide-settings-button><option value=1 selected>是<option value=0>否</select>

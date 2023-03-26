@@ -27,18 +27,19 @@ func updateAppearanceOptions(c *gin.Context) {
 		OptionOpenAppNewTab      bool `form:"open-app-newtab"`
 		OptionOpenBookmarkNewTab bool `form:"open-bookmark-newtab"`
 
-		OptionShowTitle     bool   `form:"show-title"`
-		OptionGreetings     string `form:"greetings"`
-		OptionShowDateTime  bool   `form:"show-datetime"`
-		OptionShowApps      bool   `form:"show-apps"`
-		OptionShowBookmarks bool   `form:"show-bookmarks"`
-		OptionShowSidebar   bool   `form:"show-sidebar"`
-		HideSettingsButton  bool   `form:"hide-settings-button"`
-		HideHelpButton      bool   `form:"hide-help-button"`
-		HideTopButton       bool   `form:"hide-top-button"`
-		EnableEncryptedLink bool   `form:"enable-encrypted-link"`
-		IconMode            string `form:"icon-mode"`
-		KeepLetterCase      bool   `form:"keep-letter-case"`
+		OptionShowTitle         bool   `form:"show-title"`
+		OptionGreetings         string `form:"greetings"`
+		OptionShowDateTime      bool   `form:"show-datetime"`
+		OptionShowApps          bool   `form:"show-apps"`
+		OptionShowBookmarks     bool   `form:"show-bookmarks"`
+		OptionShowSidebar       bool   `form:"show-sidebar"`
+		OptionVerticalBookmarks bool   `form:"vertical-bookmarks"`
+		HideSettingsButton      bool   `form:"hide-settings-button"`
+		HideHelpButton          bool   `form:"hide-help-button"`
+		HideTopButton           bool   `form:"hide-top-button"`
+		EnableEncryptedLink     bool   `form:"enable-encrypted-link"`
+		IconMode                string `form:"icon-mode"`
+		KeepLetterCase          bool   `form:"keep-letter-case"`
 
 		OptionCustomDay   string `form:"custom-day"`
 		OptionCustomMonth string `form:"custom-month"`
@@ -61,6 +62,7 @@ func updateAppearanceOptions(c *gin.Context) {
 	update.ShowApps = body.OptionShowApps
 	update.ShowBookmarks = body.OptionShowBookmarks
 	update.ShowSidebar = body.OptionShowSidebar
+	update.VerticalBookmarks = body.OptionVerticalBookmarks
 	update.HideSettingsButton = body.HideSettingsButton
 	update.HideHelpButton = body.HideHelpButton
 	update.HideTopButton = body.HideTopButton
@@ -107,6 +109,7 @@ func pageAppearance(c *gin.Context) {
 			"OptionShowApps":            options.ShowApps,
 			"OptionShowBookmarks":       options.ShowBookmarks,
 			"OptionShowSidebar":         options.ShowSidebar,
+			"OptionVerticalBookmarks":   options.VerticalBookmarks,
 			"OptionHideSettingsButton":  options.HideSettingsButton,
 			"OptionHideHelpButton":      options.HideHelpButton,
 			"OptionHideTopButton":       options.HideTopButton,

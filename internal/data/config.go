@@ -36,6 +36,8 @@ ShowApps: true
 ShowBookmarks: true
 # 展示书签分类侧边栏
 ShowSidebar: true
+# 垂直排列书签
+VerticalBookmarks: false
 # 隐藏界面中的设置按钮
 HideSettingButton: false
 # 隐藏界面中的帮助按钮

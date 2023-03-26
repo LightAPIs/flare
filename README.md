@@ -14,9 +14,9 @@
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持使用 [Simple Icons](https://simpleicons.org/) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。(*注：在 [Flare](https://github.com/soulteary/flare) v0.4.0 后便会添加此功能。*)
-1. 调整为水平排列书签。(*v0.4.0-20230316*)
+1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v8.8.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。(*注：在 [Flare](https://github.com/soulteary/flare) v0.4.0 后便会添加此功能。*)
 1. 添加可选的侧边栏功能。(*v0.4.0-20230316*)
+1. 调整为可选水平(默认)或垂直排列书签。(*v0.4.0-20230326*)
 1. 调整基础样式，以优化在移动端下的使用体验。
 
 ## 其他改动
@@ -29,7 +29,7 @@
     - 修复在没有分类时书签显示异常的问题。
     - 修复子页面下设置按钮显示异常的问题。(*v0.4.0-20230314*)
     - 修复子页面下的按钮无法通过设置隐藏的问题。(*v0.4.0-20230314*)
-    - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.1.96 版本。
+    - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.2.96 版本。
 
 ## 程序截图
 
@@ -52,7 +52,12 @@ Docker Hub 镜像：[giterhub/flare](https://hub.docker.com/r/giterhub/flare)，
 docker pull giterhub/flare:latest
 
 # run
-docker run -p 5005:5005 -d --name flare --mount type=bind,source=/flare/app,target=/app -e FLARE_LOG_LEVEL=ERROR giterhub/flare:latest
+docker run -d \
+    --name flare \
+    -p 5005:5005 \
+    --mount type=bind,source=$PWD/flare/app,target=/app \
+    -e FLARE_LOG_LEVEL=ERROR \
+    giterhub/flare:latest
 ```
 
 其他环境变量及使用方法可以参考：[docker-flare](https://github.com/soulteary/docker-flare)。

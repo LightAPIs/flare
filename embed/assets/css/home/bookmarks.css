@@ -16,10 +16,18 @@
   float: none;
 }
 
+#container-bookmakrs.use-vertical-bookmarks .bookmark-group-container {
+  width: 16.66%;
+}
+
 #container-bookmakrs .bookmark-group-container .bookmark-list li {
   float: left;
   width: 16.66%;
   padding: 1px;
+}
+
+#container-bookmakrs.use-vertical-bookmarks .bookmark-group-container .bookmark-list li {
+  width: 100%;
 }
 
 #container-bookmakrs .bookmark-group-container h3 {
@@ -76,11 +84,25 @@
   #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 20%;
   }
+
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container {
+    width: 20%;
+  }
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container .bookmark-list li {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
   #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 25%;
+  }
+
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container {
+    width: 25%;
+  }
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container .bookmark-list li {
+    width: 100%;
   }
 }
 
@@ -88,10 +110,24 @@
   #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 33.33%;
   }
+
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container {
+    width: 33.33%;
+  }
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container .bookmark-list li {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   #container-bookmakrs .bookmark-group-container .bookmark-list li {
     width: 50%;
+  }
+
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container {
+    width: 50%;
+  }
+  #container-bookmakrs.use-vertical-bookmarks .bookmark-group-container .bookmark-list li {
+    width: 100%;
   }
 }
