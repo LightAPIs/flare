@@ -28,10 +28,10 @@ func GenerateApplicationsTemplate() template.HTML {
 		// 则使用服务端 Location 方式打开链接
 		templateURL := ""
 		if strings.HasPrefix(app.URL, "chrome-extension://") {
-			templateURL = "/redir/" + FlareData.Base64Encode(app.URL)
+			templateURL = "/redir/url?go=" + FlareData.Base64EncodeUrl(app.URL)
 		} else {
 			if options.EnableEncryptedLink {
-				templateURL = "/redir/" + FlareData.Base64Encode(app.URL)
+				templateURL = "/redir/url?go=" + FlareData.Base64EncodeUrl(app.URL)
 			} else {
 				templateURL = app.URL
 			}
