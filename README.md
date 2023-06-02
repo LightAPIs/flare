@@ -14,7 +14,7 @@
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v8.8.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
+1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v9.0.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
 1. 添加可选的侧边栏功能。(_v0.4.0-20230316_)
 1. 调整为可选水平(默认)或垂直排列书签。(_v0.4.0-20230326_)
 1. 调整基础样式，以优化在移动端下的使用体验。
