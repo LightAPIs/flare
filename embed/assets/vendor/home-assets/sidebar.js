@@ -25,6 +25,15 @@
       }
     }
 
+    /** 取消搜索输入框的焦点 */
+    function blurSerachInput() {
+      /** 搜索框 */
+      const searchInput = document.getElementById('search');
+      setTimeout(() => {
+        searchInput?.blur();
+      }, 0);
+    }
+
     document.querySelectorAll('.catetory-group-content .category-list a').forEach(ele => {
       const id = ele.getAttribute('href').replace('#', '');
       ele.addEventListener('click', ev => {
@@ -53,6 +62,7 @@
       sidebarBtn.addEventListener('click', ev => {
         ev.stopPropagation();
         ev.preventDefault();
+        blurSerachInput();
         setSidebarState();
       });
       sidebarBtn.addEventListener(
@@ -60,6 +70,7 @@
         ev => {
           ev.stopPropagation();
           ev.preventDefault();
+          blurSerachInput();
           setSidebarState();
         },
         {

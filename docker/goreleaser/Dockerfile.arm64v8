@@ -7,7 +7,7 @@ RUN apk add upx && \
     mv flare.minify flare
 RUN ls -al
 
-FROM arm64v8/alpine:3.16
+FROM arm64v8/alpine:3.18
 COPY --from=Builder /app/flare /bin/flare
 ENV TZ=Asia/Shanghai
 RUN apk add tzdata && \
