@@ -136,6 +136,19 @@ func parseEnvFile(baseFlags FlareModel.Flags) FlareModel.Flags {
 
 	if err != nil {
 		fmt.Println("Parse .env file error", err)
+	} else {
+		baseFlags.Port = defaults.Port
+		baseFlags.EnableGuide = defaults.EnableGuide
+		baseFlags.EnableDeprecatedNotice = defaults.EnableDeprecatedNotice
+		baseFlags.EnableMinimumRequest = defaults.EnableMinimumRequest
+		baseFlags.EnableOfflineMode = defaults.EnableOfflineMode
+		baseFlags.EnableEditor = defaults.EnableEditor
+		baseFlags.DisableCSP = defaults.DisableCSP
+		baseFlags.Visibility = defaults.Visibility
+		baseFlags.DisableLoginMode = defaults.DisableLoginMode
+		baseFlags.User = defaults.User
+		baseFlags.Pass = defaults.Pass
+		baseFlags.LogLevel = defaults.LogLevel
 	}
 
 	return baseFlags

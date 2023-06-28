@@ -65,10 +65,13 @@
 
     <h2>应用编辑</h2>
 
-    <div id="search-container"><span>高亮筛选:</span>
-        <input type="text" name="" id="search">
-        <input style="float:right;margin: 0 10px;" type="submit" value="返回首页" id="back-home" />
-        <input style="float:right;" type="submit" value="保存数据" class="update-data" />
+    <div id="search-container" style="text-align: right;">
+        <sapn style="float: left; margin: 2px;">
+            <span>高亮筛选:</span>
+            <input type="text" name="" id="search">
+        </sapn>
+        <input style="margin: 0 10px;" type="submit" value="保存数据" class="update-data" />
+        <input type="submit" value="返回首页" id="back-home" />
     </div>
 
     <div id="container-bookmarks"></div>
@@ -98,8 +101,9 @@
         const instanceCategories = new Handsontable(document.getElementById('container-category'), {
             language: 'zh-CN',
             data: categories,
-            colHeaders: ['书签名称'],
+            colHeaders: ['分类名称'],
             rowHeaders: true,
+            manualRowMove: true,
             contextMenu: ["row_above", "row_below", "---------", "undo", "redo", "---------", "cut", "copy"],
             columns: [
                 { data: 'Name' },
@@ -172,8 +176,9 @@
         let instanceBookmarks = new Handsontable(container, {
             language: 'zh-CN',
             data: Array.from(bookmarks),
-            colHeaders: ['书签名称', '书签地址', /*'私密'*/, '类型', '图标', '描述'],
+            colHeaders: ['书签名称', '书签地址', /*'私密',*/ '类型', '图标', '描述'],
             rowHeaders: true,
+            manualRowMove: true,
             contextMenu: ["row_above", "row_below", "---------", "undo", "redo", "---------", "cut", "copy"],
             columns: dataTableColumns,
             // hiddenColumns: true,
