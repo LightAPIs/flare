@@ -15,7 +15,12 @@ func GenerateBookmarkTemplate() template.HTML {
 	bookmarksData := FlareData.LoadNormalBookmarks()
 	tpl := ""
 
-	bookmarks := bookmarksData.Items
+	var bookmarks []FlareModel.Bookmark
+
+	for _, bookmark := range bookmarksData.Items {
+		bookmark.URL = FlareState.ParseDynamicUrl(bookmark.URL)
+		bookmarks = append(bookmarks, bookmark)
+	}
 
 	if len(bookmarksData.Categories) > 0 {
 		defaultCategory := bookmarksData.Categories[0]

@@ -6,14 +6,21 @@ import (
 
 	FlareData "github.com/soulteary/flare/internal/data"
 	FlareIcons "github.com/soulteary/flare/internal/icons"
+	FlareModel "github.com/soulteary/flare/internal/model"
 	FlareState "github.com/soulteary/flare/internal/state"
 )
 
 func GenerateApplicationsTemplate() template.HTML {
 	options := FlareData.GetAllSettingsOptions()
 	appsData := FlareData.LoadFavoriteBookmarks()
-	apps := appsData.Items
 	tpl := ""
+
+	var apps []FlareModel.Bookmark
+
+	for _, app := range appsData.Items {
+		app.URL = FlareState.ParseDynamicUrl(app.URL)
+		apps = append(apps, app)
+	}
 
 	for _, app := range apps {
 

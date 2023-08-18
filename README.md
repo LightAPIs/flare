@@ -8,16 +8,55 @@
 
 在基础功能上基本和 [Flare](https://github.com/soulteary/flare) 保持一致，并额外添加以下功能：
 
-1. 添加控制程序日志输出级别的环境变量(`FLARE_LOG_LEVEL`)/启动命令(`log_level`)，可选值：`TRACE`、`DEBUG`、`INFO`、`WARN`、`ERROR`、`PANIC`。示例：
-   - 通过环境变量配置程序日志输出级别：添加 `FLARE_LOG_LEVEL` 环境变量并将值设为 `ERROR`。
-   - 通过启动命令配置程序日志输出级别：`flare --log_level=ERROR`。
+1. 添加控制程序[日志输出级别](#日志输出级别)。
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v9.3.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
+1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v9.10.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
 1. 添加可选的侧边栏功能。(_v0.4.0-20230316_)
 1. 调整为可选水平(默认)或垂直排列书签。(_v0.4.0-20230326_)
 1. 调整基础样式，以优化在移动端下的使用体验。
+1. 书签网址支持[动态 URL 参数](#动态-url-参数)。 (_v0.4.1-2023-08-18_)
+
+### 日志输出级别
+
+- 名称:
+  - 环境变量: `FLARE_LOG_LEVEL`
+  - 启动命令: `log_level`
+- 可选值: `TRACE`、`DEBUG`、`INFO`、`WARN`、`ERROR`、`PANIC`
+
+#### 示例
+
+配置程序日志输出级别为 `ERROR`:
+
+- 通过环境变量来配置: 添加 `FLARE_LOG_LEVEL` 环境变量并将值设为 `ERROR`。
+- 通过启动命令来配置: `flare --log_level=ERROR`。
+
+### 动态 URL 参数
+
+> Since v0.4.1-2023-08-18
+
+#### 参数
+
+假设 flare 服务的首页地址为 `https://192.168.0.1:5005/`，以下可用的各参数及其对应解析结果：
+
+| 参数名 | 解析结果 |
+| --- | --- |
+| `host` | `192.168.0.1:5005` |
+| `hostname` | `192.168.0.1` |
+| `href` | `https://192.168.0.1:5005/` |
+| `origin` | `https://192.168.0.1:5005` |
+| `pathname` | `/` |
+| `port` | `5005` |
+| `protocol` | `https:` |
+
+#### 示例
+
+假设某书签网址配置为 `https://{hostname}:8888/test` 时:
+
+- 当 flare 服务的首页地址为 `https://192.168.0.1:5005/`，其显示为 `https://192.168.0.1:8888/test`。
+- 当 flare 服务的首页地址为 `https://172.17.0.1:5005/`，其显示为 `https://172.17.0.1:8888/test`。
+- 当 flare 服务的首页地址为 `https://link.example.com/`，其显示为 `https://link.example.com:8888/test`。
 
 ## 其他改动
 

@@ -55,5 +55,4 @@ func Base64DecodeUrl(input string) ([]byte, error) {
 		return []byte{}, err
 	}
 	return base64.StdEncoding.DecodeString(unescaped)
-
 }
