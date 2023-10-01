@@ -12,7 +12,7 @@
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v9.10.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
+1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v9.16.1) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
 1. 添加可选的侧边栏功能。(_v0.4.0-20230316_)
 1. 调整为可选水平(默认)或垂直排列书签。(_v0.4.0-20230326_)
 1. 调整基础样式，以优化在移动端下的使用体验。
@@ -69,6 +69,7 @@
   - 修正应用编辑下表格标题的显示 (_v0.4.1-20230628_)
   - 修复在移动端下应用编辑顶部内容溢出导致显示异常的问题 (_v0.4.1-20230628_)
   - 在线数据编辑支持拖动行来进行排序 (_v0.4.1-20230628_)
+  - 修复同域下多个项目中登录状态会相互影响的问题 (_v0.4.1-20231001_)
   - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.2.96 版本。
 
 ---

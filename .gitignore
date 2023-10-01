@@ -32,3 +32,5 @@ bookmarks.yml
 config.yml
 
 RELEASE_*
+
+.env
