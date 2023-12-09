@@ -17,7 +17,10 @@ func jsonStringify(data interface{}) string {
 	buff := bytes.NewBuffer([]byte{})
 	encoder := json.NewEncoder(buff)
 	encoder.SetEscapeHTML(false)
-	encoder.Encode(data)
+	err := encoder.Encode(data)
+	if err != nil {
+		return "{}"
+	}
 	return strings.TrimSpace(buff.String())
 }
 

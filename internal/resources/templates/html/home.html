@@ -1,12 +1,11 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=google content="notranslate"><meta name=viewport content="width=device-width,initial-scale=1"><title>{{.OptionTitle}}</title><link rel="shortcut icon" href=favicon.ico>{{ if .DebugMode }}
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=google content="notranslate"><meta name=viewport content="width=device-width,initial-scale=1"><title>{{.OptionTitle}}</title>
+<link rel="shortcut icon" href=favicon.ico>{{ if .DebugMode }}
 <link rel=stylesheet href=/assets/css/base.css><link rel=stylesheet href=/assets/css/home/search.css><link rel=stylesheet href=/assets/css/home/hero.css><link rel=stylesheet href=/assets/css/home/apps.css><link rel=stylesheet href=/assets/css/home/bookmarks.css><link rel=stylesheet href=/assets/css/home/sidebar.css><link rel=stylesheet href=/assets/css/home/toolbar.css>{{ else }}<style>{{.PageInlineStyle}}</style>{{ end }}
 {{ if .OptionHideTopButton }}
 {{ else }}
-<script defer src=/assets/home/top.js></script>
-{{ end }}
+<script defer src=/assets/home/top.js></script>{{ end }}
 {{ if.OptionShowSidebar }}
-<script defer src=/assets/home/sidebar.js></script>
-{{ end }}
+<script defer src=/assets/home/sidebar.js></script>{{ end }}
 <script defer src=/assets/home/search.js></script><meta name=description content="Flare - self-hosted startpage for your server"></head><body style={{.PageAppearance}} class={{.BodyClassName}}><div class=pageview id=page-home><div class="container no-select">{{ if .OptionShowBookmarks }}
 {{ if .OptionShowSidebar }}<div class=module-container id=sidebar-container>{{.Sidebar}}</div>{{ end }}
 {{ end }}
