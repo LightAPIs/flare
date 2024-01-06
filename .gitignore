@@ -10,6 +10,7 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+coverage.html
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
@@ -21,8 +22,8 @@ internal/assets/favicon.ico
 internal/assets/css
 internal/templates/html/*
 internal/mdi/mdi-cheat-sheets
-internal/guide/guide-assets
-internal/editor/editor-assets
+internal/pages/guide/guide-assets
+internal/pages/editor/editor-assets
 internal/pages/home/home-assets
 internal/weather/icons
 .DS_Store

@@ -12,7 +12,7 @@
 1. 生产环境下不再输出 `gin-gonic/gin` 包日志。
 1. 首页的搜索框支持实时搜索书签。
 1. 添加一个可选的返回顶部按钮。
-1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v10.1.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
+1. 添加支持使用 [Simple Icons](https://simpleicons.org/)(v10.4.0) 图标，格式为 `si` 前缀 + [slug](https://github.com/simple-icons/simple-icons/blob/master/slugs.md)，如：`siGitHub`。
 1. 添加可选的侧边栏功能。(_v0.4.0-20230316_)
 1. 调整为可选水平(默认)或垂直排列书签。(_v0.4.0-20230326_)
 1. 调整基础样式，以优化在移动端下的使用体验。
@@ -23,7 +23,7 @@
 - 名称:
   - 环境变量: `FLARE_LOG_LEVEL`
   - 启动命令: `log_level`
-- 可选值: `TRACE`、`DEBUG`、`INFO`、`WARN`、`ERROR`、`PANIC`
+- 可选值: `DEBUG`、`INFO`、`WARN`、`ERROR`
 
 #### 示例
 
@@ -36,14 +36,17 @@
 
 其他改动主要包含修复在 [Flare](https://github.com/soulteary/flare) 正式发行版本中存在的问题，这些问题理论上会在 [Flare](https://github.com/soulteary/flare) 的后续迭代版本中被处理和修复，所以这些更改基本只会针对特定的发行版本：
 
-- **0.4.3:**
-  - 修正某些 HTML 标签名错误。
-  - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.3.67 版本。
+- **0.5.1**
+  - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.4.47 版本。
 
 ---
 
 <details>
 <summary>旧版本中的改动</summary>
+
+- **0.4.3:**
+  - 修正某些 HTML 标签名错误。
+  - 更新 [Material Design Icons](https://materialdesignicons.com/) 图标至 v7.3.67 版本。
 
 - **0.4.1:**
   - 修复加密链接可能无法解码的问题。

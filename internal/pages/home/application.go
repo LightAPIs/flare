@@ -4,10 +4,10 @@ import (
 	"html/template"
 	"strings"
 
-	FlareData "github.com/soulteary/flare/internal/data"
+	FlareData "github.com/soulteary/flare/config/data"
+	FlareModel "github.com/soulteary/flare/config/model"
+	FlareState "github.com/soulteary/flare/config/state"
 	FlareIcons "github.com/soulteary/flare/internal/icons"
-	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareState "github.com/soulteary/flare/internal/state"
 )
 
 func GenerateApplicationsTemplate() template.HTML {

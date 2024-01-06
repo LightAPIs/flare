@@ -4,10 +4,10 @@ import (
 	"html/template"
 	"strings"
 
-	FlareData "github.com/soulteary/flare/internal/data"
+	FlareData "github.com/soulteary/flare/config/data"
+	FlareModel "github.com/soulteary/flare/config/model"
+	FlareState "github.com/soulteary/flare/config/state"
 	FlareIcons "github.com/soulteary/flare/internal/icons"
-	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareState "github.com/soulteary/flare/internal/state"
 )
 
 func GenerateBookmarkTemplate() template.HTML {
@@ -25,7 +25,8 @@ func GenerateBookmarkTemplate() template.HTML {
 	if len(bookmarksData.Categories) > 0 {
 		defaultCategory := bookmarksData.Categories[0]
 		for _, category := range bookmarksData.Categories {
-			tpl += renderBookmarksWithCategories(&bookmarks, &category, &defaultCategory, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode)
+			categoryCopy := category
+			tpl += renderBookmarksWithCategories(&bookmarks, &categoryCopy, &defaultCategory, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode)
 		}
 	} else {
 		tpl += renderBookmarksWithoutCategories(&bookmarks, options.OpenBookmarkNewTab, options.EnableEncryptedLink, options.IconMode)

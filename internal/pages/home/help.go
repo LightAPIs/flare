@@ -3,9 +3,9 @@ package home
 import (
 	"html/template"
 
+	FlareModel "github.com/soulteary/flare/config/model"
+	FlareState "github.com/soulteary/flare/config/state"
 	FlareIcons "github.com/soulteary/flare/internal/icons"
-	FlareModel "github.com/soulteary/flare/internal/model"
-	FlareState "github.com/soulteary/flare/internal/state"
 )
 
 func GenerateHelpTemplate() template.HTML {

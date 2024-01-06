@@ -3,8 +3,8 @@ package home
 import (
 	"html/template"
 
-	FlareData "github.com/soulteary/flare/internal/data"
-	FlareModel "github.com/soulteary/flare/internal/model"
+	FlareData "github.com/soulteary/flare/config/data"
+	FlareModel "github.com/soulteary/flare/config/model"
 )
 
 func GenerateSidebarTemplate() template.HTML {

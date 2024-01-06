@@ -11,9 +11,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/soulteary/memfs"
 
+	FlareState "github.com/soulteary/flare/config/state"
 	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
 	FlareSI "github.com/soulteary/flare/internal/resources/simpleicons"
-	FlareState "github.com/soulteary/flare/internal/state"
 )
 
 var MemFs *memfs.FS
