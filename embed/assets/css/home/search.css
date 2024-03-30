@@ -1,3 +1,7 @@
+#search-container {
+  margin-bottom: 20px;
+}
+
 #search-container #search {
   width: 100%;
   padding: 10px 0;
@@ -10,22 +14,6 @@
   opacity: 0.5;
   transition: all 0.2s;
   outline: none;
-}
-
-#search-container #search-label {
-  text-align: right;
-  width: 100%;
-  display: block;
-  opacity: 0;
-}
-
-#search-container #search:active + label {
-  opacity: 1;
-  transition: all 0.2s;
-}
-#search-container #search:focus + label {
-  opacity: 1;
-  transition: all 0.2s;
 }
 
 .apps-container .app-container.search-result-hide,
